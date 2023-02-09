@@ -13,10 +13,13 @@ public class ParkingControlApplication {
 		SpringApplication.run(ParkingControlApplication.class, args);
 	}
 
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String index(){
-		return "Olá mundo!";
+		return "Olá mundo!Java Spring Boot";
 	}
 
 
+
+	//https://www.youtube.com/watch?v=LXRU-Z36GEU&t=2744s
+	/// min 1:02:20
 }

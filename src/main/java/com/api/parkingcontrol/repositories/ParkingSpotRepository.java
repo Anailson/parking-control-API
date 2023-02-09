@@ -9,6 +9,7 @@ import java.util.UUID;
 @Repository
 public interface ParkingSpotRepository extends JpaRepository<ParkingSpotModel, UUID>{
 
+    //DECLARANDO OS METODOS PARA CRIAR A CODIÇÃO DE VALIDAR AO SALVAR OS DADOS
     boolean existsByLicensePlateCar(String licensePlateCar);
     boolean existsByParkingSpotNumber(String parkingSpotNumber);
     boolean existsByApartmentAndBlock(String apartment, String block);

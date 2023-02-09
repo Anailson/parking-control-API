@@ -22,7 +22,7 @@ public class ParkingSpotService {
         this.parkingSpotRepository = parkingSpotRepository;
     }
 
-    @Transactional
+    @Transactional  //salvando
     public ParkingSpotModel save(ParkingSpotModel parkingSpotModel) {
 
         return  parkingSpotRepository.save(parkingSpotModel);
@@ -53,6 +53,7 @@ public class ParkingSpotService {
 
         return parkingSpotRepository.findById(id);
     }
+    //delete
     @Transactional
     public void delete(ParkingSpotModel parkingSpotModel) {
          parkingSpotRepository.delete(parkingSpotModel);

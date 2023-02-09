@@ -21,7 +21,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)//acessado de qql fonte
 @RequestMapping("/parking-spot")
 public class ParkingSpotController {
 
@@ -31,10 +31,10 @@ public class ParkingSpotController {
         this.parkingSpotService = parkingSpotService;
     }
 
-    @PostMapping
+    @PostMapping//salvando novos registros
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto){
 
-        //CRIANDO VALIDAÇÃO CASO JÁ ESTEJA REGISTROS
+        //CRIANDO VALIDAÇÃO CASO JÁ ESTEJA REGISTROS - chamando os metodos criados no repository
         if(parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: License Plate Car is already in use - Placa de Carro em uso!");
         }
@@ -61,7 +61,7 @@ public class ParkingSpotController {
     public ResponseEntity<Object> getOneParkingSpot(@PathVariable(value = "id")UUID id){
         Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
         if (!parkingSpotModelOptional.isPresent()){ //CASO NÃO ESTIVER PRESENTE O ID
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vaga de estacionamento não encontrada!");
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
